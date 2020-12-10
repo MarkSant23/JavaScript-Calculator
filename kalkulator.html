@@ -2,165 +2,63 @@
 <html>
 <head>
 <title>Moj Kalkulator</title>
+<link rel="stylesheet" type="text/css" href="kalkultator.css">
+<script src="kalkulator.js"></script>
 
-<style>
-.calc {
-	width:400px;
-	background-color: silver;
-	margin:auto;
-	padding: 15px;
-	text-align:center;
-	border:solid black 1px;
-	font-size: 16 px;
-}
-.calc input[type='button']{
-	padding: 10px;
-	margin: 10px;
-	width: 50px;
-	font-size; 20px;
-}
-#display{
-	width:450px;
-	height:30px;
-	text-align:right;
-	border:navy blue;
-	font-size:18px;
-	background-color: gold;
-	
-}
-body {
-	background-image: url("jGlzr.png"); 
-}
-.operator{
-	color: #0000ff;
-	font-size:15px;
-	background-color: lavender;
-}
-.mathf{
-	font-size:15px;
-	background-color: lightblue;
-}
-.bbb{
-	font-size:15px;
-	background-color:greenYellow;
-}
-.broj{
-	font-family:bold;
-	background-color: white;
-	font-size:15px;
-}
-</style>
-
-<script type='text/javascript'>
-
-function ispis(obj,string){
-	if(obj.value==null || obj.value=='0')
-		obj.value = string
-	else
-		obj.value += string
-}
-var val = 0.0;
-function postotak(input){
-	val = input.value;
-	input.value += '%';
-}
-
-function del(obj){
-	obj.value = obj.value.substring(0,obj.value.length -1) 
-}
-
-function provjera(eql){
-	for(var i = 0; i < eql.length; i++){
-		var c = eql.charAt(i);
-		if(c<'0' || c>'9'){
-			if(c!='+'&&c!='-'&&c!='*'&&c!='/'&&c!='%'&&c!='('&&c!=')' && c!='.') {
-				alert("Ne valjani ulaz!")
-				return false
-				}
-			}	
-		}
-		return true
-}
-function prebroji(form){
-	form.display.value = eval(form.display.value);
-}
-
-function sin(form){
-	form.display.value=Math.sin(form.display.value);
-}
-
-function cos(form){
-	form.display.value=Math.cos(form.display.value);
-}
-
-function tan(form){
-	form.display.value=Math.tan(form.display.value);
-}
-
-function log(form){
-	form.display.value=Math.log(form.display.value);
-}
-
-function eksponent(form){
-	form.display.value=Math.exp(form.display.value);
-}
-
-function sqrt(form){
-	form.display.value=Math.sqrt(form.display.value);
-}
-
-function kvadriranje(form){
-	form.display.value = eval(form.display.value) * eval(form.display.value);
-}
-
-</script>
 </head>
+
 <body>
 <form>
-<table class='calc' cellpadding='2' cellspacing='1'>
-	<tr>
-	  <td colspan='6'> <input class='calculator' size = '10' maxlength='27' id='display' name='display'></td>
-	 </tr>
-	<tr> 
-	  <td><input type='button' class='broj'value='1' onclick='ispis(this.form.display, "1")'></td>
-	  <td><input type='button' class='broj'value='2' onclick='ispis(this.form.display, "2")'></td>
-	  <td><input type='button' class='broj'value='3' onclick='ispis(this.form.display, "3")'></td>
-	  <td><input type='button' class='operator' value='+' onclick='ispis(this.form.display,"+")'></td>
-	  <td><input type='button' class='operator' value='<-' onclick='del(this.form.display)'></td>
-	  <td><input type='button' class='mathf' value='sqrt' onclick='if(provjera(this.form.display.value)) { sqrt(this.form) }')></td>
-	</tr>
-	 <tr>
-	  <td><input type='button' class='broj'value='4' onclick='ispis(this.form.display, "4")'></td>
-	  <td><input type='button' class='broj'value='5' onclick='ispis(this.form.display, "5")'></td>
-	  <td><input type='button' class='broj'value='6' onclick='ispis(this.form.display, "6")'></td>
-	  <td><input type='button' class='operator' value='--' onclick='ispis(this.form.display, "-")'></td>
-	  <td><input type='button' class='operator' value='AC' onclick='this.form.display.value = 0'></td>
-	  <td><input type='button' class='mathf' value='sin' onclick='if(provjera(this.form.display.value)) { sin(this.form) })'></td>
-	 </tr>
-	 <tr>
-	  <td><input type='button' class='broj'value='7' onclick='ispis(this.form.display, "7")'></td>
-	  <td><input type='button' class='broj'value='8' onclick='ispis(this.form.display, "8")'></td>
-	  <td><input type='button' class='broj'value='9' onclick='ispis(this.form.display, "9")'></td>
-	  <td><input type='button' class='operator' value='/' onclick='ispis(this.form.display, "/")'></td>
-	  <td><input type='button' class='operator' value='.' onclick='ispis(this.form.display, ".")'></td>
-	  <td><input type='button' class='mathf' value='cos' onclick='if(provjera(this.form.display.value)) { cos(this.form) }'></td>
-	</tr>
-	<tr>
-	  <td><input type='button' class='bbb' value='%' onclick='postotak(this.form.display)'></td>
-	  <td><input type='button' class='broj'value='0' onclick='ispis(this.form.display, "0")'></td>
-	  <td><input type='button' class='operator' value='=' onclick='if(provjera(this.form.display.value)) {prebroji(this.form)}'></td>
-	  <td><input type='button' class='operator' value='*' onclick='ispis(this.form.display, "*")'></td>
-	  <td><input type='button' class='operator' value='log' onclick='if(provjera(this.form.display.value)) { log(this.form) }'></td>
-	  <td><input type='button' class='mathf' value='tan' onclick='if(provjera(this.form.display.value)) { tan(this.form) }'></td>
-	</tr>
-	<tr>
-	  <td><input type='button' class='bbb' value='(' onclick='ispis(this.form.display, "(")'></td>
-	  <td><input type='button' class ='bbb' value=')' onclick='ispis(this.form.display, ")")'></td>
-	  <td><input type='button' class='bbb' value='PI' onclick='ispis(this.form.display, "3.14159265359")'></td>
-	  <td><input type='button' class='mathf' value='x^' onclick='if(provjera(this.form.display.value)) {eksponent(this.form)}')></td>
-	  <td><input type='button' class='mathf' value='x^2' onclick='if(provjera(this.form.display.value)) { kvadriranje(this.form)}'></td>
-	</tr>
-</table>
+	<table class='calc' cellpadding='2' cellspacing='1'>
+		<tr>
+		  <td colspan='6'> <input class='calculator' size = '10' maxlength='27' id='display' name='display'></td>
+		 </tr>
+		<tr> 
+		  <td><input type='button' class='broj'value='1' onclick='ispis(this.form.display, "1")'></td>
+		  <td><input type='button' class='broj'value='2' onclick='ispis(this.form.display, "2")'></td>
+		  <td><input type='button' class='broj'value='3' onclick='ispis(this.form.display, "3")'></td>
+		  <td><input type='button' class='operator' value='+' onclick='ispis(this.form.display,"+")'></td>
+		  <td><input type='button' class='operator' value='--' onclick='del(this.form.display)'></td>
+		  
+		</tr>
+		 <tr>
+		  <td><input type='button' class='broj'value='4' onclick='ispis(this.form.display, "4")'></td>
+		  <td><input type='button' class='broj'value='5' onclick='ispis(this.form.display, "5")'></td>
+		  <td><input type='button' class='broj'value='6' onclick='ispis(this.form.display, "6")'></td>
+		  <td><input type='button' class='operator' value='-' onclick='ispis(this.form.display, "-")'></td>
+		  <td><input type='button' class='operator' value='AC' onclick='this.form.display.value = 0'></td>
+		  
+		 </tr>
+		 <tr>
+		  <td><input type='button' class='broj'value='7' onclick='ispis(this.form.display, "7")'></td>
+		  <td><input type='button' class='broj'value='8' onclick='ispis(this.form.display, "8")'></td>
+		  <td><input type='button' class='broj'value='9' onclick='ispis(this.form.display, "9")'></td>
+		  <td><input type='button' class='operator' value='/' onclick='ispis(this.form.display, "/")'></td>
+		  <td><input type='button' class='operator' value='.' onclick='ispis(this.form.display, ".")'></td>
+		  
+		</tr>
+		<tr>
+		  <td><input type='button' class='bbb' value='%' onclick='postotak(this.form.display)'></td>
+		  <td><input type='button' class='broj'value='0' onclick='ispis(this.form.display, "0")'></td>
+		  <td><input type='button' class='operator' value='=' onclick='if(provjera(this.form.display.value)) {prebroji(this.form)}'></td>
+		  <td><input type='button' class='operator' value='*' onclick='ispis(this.form.display, "*")'></td>
+		  <td><input type='button' class='operator' value='log' onclick='if(provjera(this.form.display.value)) { log(this.form) }'></td>
+		  
+		</tr>
+		<tr>
+		  <td><input type='button' class='bbb' value='(' onclick='ispis(this.form.display, "(")'></td>
+		  <td><input type='button' class ='bbb' value=')' onclick='ispis(this.form.display, ")")'></td>
+		  <td><input type='button' class='bbb' value='PI' onclick='ispis(this.form.display, "3.14159265359")'></td>
+		  <td><input type='button' class='mathf' value='x^' onclick='if(provjera(this.form.display.value)) {eksponent(this.form)}')></td>
+		  <td><input type='button' class='mathf' value='x^2' onclick='if(provjera(this.form.display.value)) { kvadriranje(this.form)}'></td>
+		</tr>
+		<tr>
+			<td><input type='button' class='mathf' value='sqrt' onclick='if(provjera(this.form.display.value)) { sqrt(this.form) }' )></td>
+			<td><input type='button' class='mathf' value='sin' onclick='if(provjera(this.form.display.value)) { sin(this.form) }'></td>
+			<td><input type='button' class='mathf' value='cos' onclick='if(provjera(this.form.display.value)) { cos(this.form) }'></td>
+			<td><input type='button' class='mathf' value='tan' onclick='if(provjera(this.form.display.value)) { tan(this.form) }'></td>
+		</tr>
+	</table>
 </form>
 
 </body>
